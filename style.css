@@ -1,0 +1,9 @@
+body{
+    background-color: antiquewhite;
+    font-family: sans-serif;
+}
+
+.text{
+    padding: 5px;
+    border-radius: 10px;
+}
