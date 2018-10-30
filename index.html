@@ -19,9 +19,9 @@
     <link rel="icon" type="image/png" sizes="96x96" href="root/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="root/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="root/ms-icon-144x144.png">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#FFFFFF">
     <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -36,13 +36,16 @@
     <div class="container">
         <h1>TEXT TO MORSE</h1>
         <section class="write">
-            <input class="text" type="text" placeholder="Digite Aqui">
+            <input class="text" type="text" placeholder="Text Here !!">
             <section class="read">
-                <div class="result"></div>
+                <div id="result"></div>
             </section>
         </section>
-        <section class="clean">
-            <button class="go">CLEAN</button>
+        <section class="copy">
+            <button onclick="copy('result')" class="go">
+                <span class="copyText">COPIED</span>
+                COPY
+            </button>
         </section>
     </div>
 </body>
