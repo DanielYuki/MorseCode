@@ -2,11 +2,13 @@ let button = document.querySelector('.go');
 let input = document.querySelector('.text');
 let results = document.querySelector('#result');
 
+button.onclick = clean;
+
 input.onkeypress = () => {
     let word = ''
     let validador = true;
-    let textToMorse = true;
-    if (textToMorse === true) {
+    let textToMorse = false;
+    if (textToMorse) {
         for (let i = 0; i < input.value.length; i++) {
             switch (input.value.charAt(i).toUpperCase()) {
                 case 'A':
@@ -131,7 +133,133 @@ input.onkeypress = () => {
             results.innerHTML = word;
         }
     } else {
-
+        let morse = input.value.split(' ');
+        for (let i = 0; i < morse.length; i++) {
+            switch (morse[i]) {
+                case '.-':
+                    word += ('A')
+                    break;
+                case '-...':
+                    word += ('B')
+                    break;
+                case '-.-.':
+                    word += ('C')
+                    break;
+                case '-..':
+                    word += ('D')
+                    break;
+                case '.':
+                    word += ('E')
+                    break;
+                case '..-.':
+                    word += ('F')
+                    break;
+                case '--.':
+                    word += ('G')
+                    break;
+                case '....':
+                    word += ('H')
+                    break;
+                case '..':
+                    word += ('I')
+                    break;
+                case '.---':
+                    word += ('J')
+                    break;
+                case '-.-':
+                    word += ('K')
+                    break;
+                case '.-..':
+                    word += ('L')
+                    break;
+                case '--':
+                    word += ('M')
+                    break;
+                case '-.':
+                    word += ('N')
+                    break;
+                case '---':
+                    word += ('O')
+                    break;
+                case '.--.':
+                    word += ('P')
+                    break;
+                case '--.-':
+                    word += ('Q')
+                    break;
+                case '.-.':
+                    word += ('R')
+                    break;
+                case '...':
+                    word += ('S')
+                    break;
+                case '-':
+                    word += ('T')
+                    break;
+                case '..-':
+                    word += ('U')
+                    break;
+                case '...-':
+                    word += ('V')
+                    break;
+                case '.--':
+                    word += ('W')
+                    break;
+                case '-..-':
+                    word += ('X')
+                    break;
+                case '-.--':
+                    word += ('Y')
+                    break;
+                case '--..':
+                    word += ('Z')
+                    break;
+                case '-----':
+                    word += ('0')
+                    break;
+                case '.----':
+                    word += ('1')
+                    break;
+                case '..---':
+                    word += ('2')
+                    break;
+                case '...--':
+                    word += ('3')
+                    break;
+                case '....-':
+                    word += ('4')
+                    break;
+                case '.....':
+                    word += ('5')
+                    break;
+                case '-....':
+                    word += ('6')
+                    break;
+                case '--...':
+                    word += ('7')
+                    break;
+                case '---..':
+                    word += ('8')
+                    break;
+                case '----.':
+                    word += ('9')
+                    break;
+                case '/':
+                    word += (' ')
+                    break;
+                case ' ':
+                    break;
+                case '':
+                    break;
+                default:
+                    validador = false;
+            }if (validador != true) {
+                alert('Digite Apenas Pontos e Traços ("." "-" "/")')
+                clean();
+            } else {
+                results.innerHTML = word;
+            }
+        }
     }
 }
 
@@ -140,17 +268,18 @@ function clean() {
     input.value = ''
 }
 
-function copy(containerid) {
-    let textarea = document.createElement('textarea')
-    textarea.id = 'temp_element'
-    textarea.style.height = 0
-    document.body.appendChild(textarea)
-    textarea.value = document.getElementById(containerid).innerText
-    let selector = document.querySelector('#temp_element')
-    selector.select()
-    document.execCommand('copy')
-    document.body.removeChild(textarea)
-}
+//  DON'T WORK ON MOBILE...
+// function copy(containerid) {
+//     let textarea = document.createElement('textarea')
+//     textarea.id = 'temp_element'
+//     textarea.style.height = 0
+//     document.body.appendChild(textarea)
+//     textarea.value = document.getElementById(containerid).innerText
+//     let selector = document.querySelector('#temp_element')
+//     selector.select()
+//     document.execCommand('copy')
+//     document.body.removeChild(textarea)
+// }
 
 
 if ('serviceWorker' in navigator) {
