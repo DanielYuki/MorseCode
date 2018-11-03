@@ -108,6 +108,58 @@ section{
     flex-direction: column;
 }
 
+.selector{
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    width: 100vw;
+    color: #679DF6;
+    height: 9vh;
+    background-color: white;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.425);
+}
+
 .morseMode{
     font-size: 20pt;
+}
+
+.box{
+    padding: 10px;
+    width: 30vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    letter-spacing: 1px;
+}
+
+.arrows{
+	width:10px;
+	height:4px;
+	box-sizing:content-box;
+	position:relative;
+	background:white;
+	border-bottom:2px solid rgba(0, 0, 0, 0.705);
+    border-top:2px solid rgba(0, 0, 0, 0.705);
+}
+
+.arrows::after{
+	content:"";
+	box-sizing:content-box;
+	position:absolute;
+	border-left:3.5px solid rgba(0, 0, 0, 0.705);
+	border-top:3px solid transparent;
+	border-bottom:3px solid transparent;
+	left:100%;
+	top:-100%;
+}
+
+.arrows::before{
+	content:"";
+	box-sizing:content-box;
+	position:absolute;
+	border-right:3.5px solid rgba(0, 0, 0, 0.705);
+	border-top:3px solid transparent;
+	border-bottom:3px solid transparent;
+	right:100%;
+	bottom:-100%;
 }

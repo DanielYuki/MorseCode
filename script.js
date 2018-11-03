@@ -1,13 +1,31 @@
 let button = document.querySelector('.go');
 let input = document.querySelector('.text');
 let results = document.querySelector('#result');
+let swap = document.querySelector('.arrows');
+
+let gambiarra1 = document.querySelector('#gambiarra1');
+let gambiarra2 = document.querySelector('#gambiarra2');
+
+let textToMorse = true;
 
 button.onclick = clean;
+
+swap.onclick = () => {
+    clean();
+    if (textToMorse === true) {
+        textToMorse = false;
+        gambiarra1.innerHTML = 'MORSE';
+        gambiarra2.innerHTML = 'TEXT';
+    } else {
+        textToMorse = true;
+        gambiarra2.innerHTML = 'MORSE';
+        gambiarra1.innerHTML = 'TEXT';
+    }
+}
 
 input.onkeypress = () => {
     let word = ''
     let validador = true;
-    let textToMorse = false;
     if (textToMorse) {
         for (let i = 0; i < input.value.length; i++) {
             switch (input.value.charAt(i).toUpperCase()) {
@@ -254,7 +272,7 @@ input.onkeypress = () => {
                 default:
                     validador = false;
             }if (validador != true) {
-                alert('Digite Apenas Pontos e Traços ("." "-" "/")')
+                alert('Digite Apenas Pontos e Traços ("." "-" "/")\n Ou Digite Certo')
                 clean();
             } else {
                 results.innerHTML = word;
