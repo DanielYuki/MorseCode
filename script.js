@@ -1,7 +1,8 @@
-let button = document.querySelector('.go');
+let button = document.querySelector('.clean');
 let input = document.querySelector('.text');
 let results = document.querySelector('#result');
 let swap = document.querySelector('.arrows');
+let blueBar = document.querySelector('.read');
 
 let gambiarra1 = document.querySelector('#gambiarra1');
 let gambiarra2 = document.querySelector('#gambiarra2');
@@ -26,6 +27,15 @@ swap.onclick = () => {
 input.onkeypress = () => {
     let word = ''
     let validador = true;
+
+    if(input.value.length == 0){
+        blueBar.style.display = 'none';
+        button.style.dispay = 'none'
+    }else{
+        blueBar.style.display = 'flex';
+        button.style.display = 'flex'
+    }
+
     if (textToMorse) {
         for (let i = 0; i < input.value.length; i++) {
             switch (input.value.charAt(i).toUpperCase()) {
@@ -284,6 +294,8 @@ input.onkeypress = () => {
 function clean() {
     results.innerHTML = '';
     input.value = ''
+    blueBar.style.display = 'none';
+    button.style.display = 'none'
 }
 
 //  DON'T WORK ON MOBILE...

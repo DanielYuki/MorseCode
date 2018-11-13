@@ -27,6 +27,24 @@ header h1{
     flex-direction: column;
 }
 
+.inputs{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    width: 100vw;
+    background-color: white;
+}
+
+.clean{
+    position: relative;
+    top: -25px;
+    left: -3%;
+    font-size: 16pt;
+    color:rgb(153, 153, 153);
+    display: none;
+}
+
 button{
     border-radius: 5px;
     background-color: #4285F4;
@@ -38,13 +56,13 @@ button{
 }
 
 .text{
+    width: 100vw;
     border: 0;
     padding: 10px 5vw;
-    width: 90vw;
-    min-height: 10vh;
+    min-height: 11vh;
     height: auto;
     margin: 0;
-    font-size: 16pt;
+    font-size: 18pt;
     text-decoration: none;
 }
 
@@ -54,14 +72,15 @@ button{
     width: 100vw;
     background-color: #1A73E8;
     align-items: flex-start;
-    box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.44);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    display: none;
 }
 
 #result{
     padding: 10px 5vw;
     font-size: 20pt;
 }
-
+/* 
 .clear{
     position: relative;
     display: inline-block;
@@ -99,7 +118,7 @@ button{
 .clear:hover .clearText {
     visibility: visible;
     opacity: 1;
-}
+} */
 
 section{
     display: flex;
