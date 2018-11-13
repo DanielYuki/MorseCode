@@ -3,6 +3,8 @@ let input = document.querySelector('.text');
 let results = document.querySelector('#result');
 let swap = document.querySelector('.arrows');
 let blueBar = document.querySelector('.read');
+let div = document.querySelector('.fav')
+let addFav = document.querySelector('.favorites')
 
 let gambiarra1 = document.querySelector('#gambiarra1');
 let gambiarra2 = document.querySelector('#gambiarra2');
@@ -28,12 +30,12 @@ input.onkeypress = () => {
     let word = ''
     let validador = true;
 
-    if(input.value.length == 0){
+    if (input.value.length == 0) {
         blueBar.style.display = 'none';
-        button.style.dispay = 'none'
-    }else{
+        button.style.display = 'none';
+    } else {
         blueBar.style.display = 'flex';
-        button.style.display = 'flex'
+        button.style.display = 'flex';
     }
 
     if (textToMorse) {
@@ -293,9 +295,9 @@ input.onkeypress = () => {
 
 function clean() {
     results.innerHTML = '';
-    input.value = ''
+    input.value = '';
     blueBar.style.display = 'none';
-    button.style.display = 'none'
+    button.style.display = 'none';
 }
 
 //  DON'T WORK ON MOBILE...
@@ -310,6 +312,42 @@ function clean() {
 //     document.execCommand('copy')
 //     document.body.removeChild(textarea)
 // }
+
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+localStorage.setItem('items', JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem('items'));
+
+const divMaker = (text, morse) => {
+    const divDad = document.createElement('div')
+    const divsWord = document.createElement('div');
+    const divsMorse = document.createElement('div');
+    divsWord.textContent = text;
+    divsMorse.textContent = morse;
+    div.appendChild(divDad);
+    divDad.appendChild(divsWord);
+    divDad.appendChild(divsMorse);
+}
+
+addFav.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    itemsArray.push([input.value, results.innerHTML]);
+    localStorage.setItem('items', JSON.stringify(itemsArray));
+    divMaker(input.value, results.innerHTML);
+    //   input.value = "";
+});
+
+data.forEach(item => {
+    divMaker(item);
+});
+
+button.addEventListener('click', function () {
+    localStorage.clear();
+    while (div.firstChild) {
+        div.removeChild(div.firstChild);
+    }
+});
 
 
 if ('serviceWorker' in navigator) {
