@@ -3,6 +3,7 @@ let input = document.querySelector('.text');
 let results = document.querySelector('#result');
 let swap = document.querySelector('.arrows');
 let blueBar = document.querySelector('.read');
+
 let div = document.querySelector('.fav')
 let addFav = document.querySelector('.favorites')
 
@@ -300,7 +301,7 @@ function clean() {
     button.style.display = 'none';
 }
 
-//  DON'T WORK ON MOBILE...
+//  DON'T WORK ON MOBILE... sadly (just a 'copy to clipboard' button)
 // function copy(containerid) {
 //     let textarea = document.createElement('textarea')
 //     textarea.id = 'temp_element'
@@ -313,41 +314,46 @@ function clean() {
 //     document.body.removeChild(textarea)
 // }
 
-let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-localStorage.setItem('items', JSON.stringify(itemsArray));
+//LOCAL STORAGE
+let favList = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+localStorage.setItem('items', JSON.stringify(favList));
 const data = JSON.parse(localStorage.getItem('items'));
 
-const divMaker = (text, morse) => {
-    const divDad = document.createElement('div')
-    const divsWord = document.createElement('div');
-    const divsMorse = document.createElement('div');
-    divsWord.textContent = text;
-    divsMorse.textContent = morse;
-    div.appendChild(divDad);
-    divDad.appendChild(divsWord);
-    divDad.appendChild(divsMorse);
+const favCreator = (text, morse) => {
+    const divFav = document.createElement('div');
+    const divTxt = document.createElement('div');
+    const divMorse = document.createElement('div');
+    const divDelete = document.createElement('button')
+    divTxt.textContent = text;
+    divMorse.textContent = morse;
+    div.appendChild(divFav);
+    divFav.appendChild(divTxt);
+    divFav.appendChild(divMorse);
+    divFav.appendChild(divDelete);
 }
 
-addFav.addEventListener('click', function (e) {
-    e.preventDefault();
+addFav.onclick = () => {
 
-    itemsArray.push([input.value, results.innerHTML]);
-    localStorage.setItem('items', JSON.stringify(itemsArray));
-    divMaker(input.value, results.innerHTML);
-    //   input.value = "";
-});
+    favList.push([input.value, results.textContent]);
+    localStorage.setItem('items', JSON.stringify(favList));
+    favCreator(input.value, results.textContent);
+    console.log(favList)
+};
 
 data.forEach(item => {
-    divMaker(item);
+    favCreator(item[0], item[1]);
 });
 
-button.addEventListener('click', function () {
+button.onclick = () => {
+    clean();
     localStorage.clear();
     while (div.firstChild) {
         div.removeChild(div.firstChild);
     }
-});
+};
+// /localStorage
 
 
 if ('serviceWorker' in navigator) {

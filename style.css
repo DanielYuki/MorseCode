@@ -2,6 +2,7 @@ body{
     background-color: #FAFAFA;
     font-family: sans-serif;
     margin: 0;
+    overflow: hidden;
 }
 
 header{
@@ -204,11 +205,15 @@ aside{
 }
 
 .fav>div{
-    width: 100vw;
+    width: 100%;
     height: auto;
     background-color: white;
     border-bottom: 0.5px solid rgba(128, 128, 128, 0.425);
-    padding: 10px;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 footer{
@@ -216,5 +221,5 @@ footer{
     bottom: 0;
     width: 100vw;
     height: 10vh;
-    background-color: black;
+    background-color: white;
 }
