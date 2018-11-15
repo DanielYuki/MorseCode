@@ -4,8 +4,18 @@ let results = document.querySelector('#result');
 let swap = document.querySelector('.arrows');
 let blueBar = document.querySelector('.read');
 
-let div = document.querySelector('.fav')
-let addFav = document.querySelector('.favorites')
+let addFav = document.querySelector('.favorites');
+let div = document.querySelector('.fav');
+
+let star = document.querySelector('.star')
+let home = document.querySelector('.home')
+let sheet = document.querySelector('.dictionary')
+
+let btnStar = document.querySelector('.btnStar');
+let btnHome = document.querySelector('.btnHome');
+let btnSheet = document.querySelector('.btnSheet');
+
+let unstarAll = document.querySelector('.unstarAll')
 
 let gambiarra1 = document.querySelector('#gambiarra1');
 let gambiarra2 = document.querySelector('#gambiarra2');
@@ -13,6 +23,22 @@ let gambiarra2 = document.querySelector('#gambiarra2');
 let textToMorse = true;
 
 button.onclick = clean;
+
+btnStar.onclick = () => {
+    star.classList.add('appearStar');
+    sheet.classList.remove('appearSheet')
+}
+
+btnHome.onclick = () => {
+    star.classList.remove('appearStar')
+    sheet.classList.remove('appearSheet')
+}
+
+btnSheet.onclick = () => {
+    sheet.classList.add('appearSheet')
+    star.classList.remove('appearStar')
+
+}
 
 swap.onclick = () => {
     clean();
@@ -283,10 +309,10 @@ input.onkeypress = () => {
                 case '':
                     break;
                 default:
+                    '?'
                     validador = false;
             }if (validador != true) {
-                alert('Digite Apenas Pontos e Traços ("." "-" "/")\n Ou Digite Certo')
-                clean();
+                alert('Digite Apenas Pontos e Traços ("." "-" "/") Ou Digite Certo')
             } else {
                 results.innerHTML = word;
             }
@@ -328,6 +354,7 @@ const favCreator = (text, morse) => {
     const divDelete = document.createElement('button')
     divTxt.textContent = text;
     divMorse.textContent = morse;
+    divDelete.classList.add('delete');
     div.appendChild(divFav);
     divFav.appendChild(divTxt);
     divFav.appendChild(divMorse);
@@ -335,18 +362,18 @@ const favCreator = (text, morse) => {
 }
 
 addFav.onclick = () => {
-
     favList.push([input.value, results.textContent]);
     localStorage.setItem('items', JSON.stringify(favList));
     favCreator(input.value, results.textContent);
     console.log(favList)
+    clean();
 };
 
 data.forEach(item => {
     favCreator(item[0], item[1]);
 });
 
-button.onclick = () => {
+unstarAll.onclick = () => {
     clean();
     localStorage.clear();
     while (div.firstChild) {

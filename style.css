@@ -1,5 +1,7 @@
+/* cor antiga padrão: #FAFAFA */
+
 body{
-    background-color: #FAFAFA;
+    background-color: #F5F5F5;
     font-family: sans-serif;
     margin: 0;
     overflow: hidden;
@@ -14,6 +16,7 @@ header{
     display: flex;
     border-bottom: 0.5px solid rgba(128, 128, 128, 0.425);
     margin: 0;
+    height: 10vh;
 }
 
 header h1{
@@ -26,6 +29,7 @@ header h1{
     height: 100vh;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .inputs{
@@ -193,20 +197,61 @@ section{
 }
 
 aside{
-    width: 100vw;
-    height: 50vh;
+    width: 300vw;
+    height: auto;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
 }
 
-.fav{
+.star{
+    justify-content: flex-start;
     width: 100vw;
+    transform: translateX(-100%);
+    transition: 0.25s;
+    background-color:#F5F5F5 ;
+    z-index: 2;
+    color: gray;
+}
+
+.star h2{
+    margin: 10px;
+    font-weight: normal;
+}
+
+.starTitle{
+    width: 100%;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.425);
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    height: 10vh;
+}
+
+.unstarAll{
+    background-color: white;
+    color: #595959;
+    font-size: 10pt;
+    font-weight: bolder;
+}
+
+.appearStar{
+    transform: translateX(100%);
+    transition: linear 0.25s;
+}
+
+.fav{
+    width: 100%;
+    max-height: 70vh;
+    height: 70vh;
+    overflow: scroll;
+    justify-content: flex-start;
 }
 
 .fav>div{
     width: 100%;
-    height: auto;
+    min-height: 15vh;
     background-color: white;
     border-bottom: 0.5px solid rgba(128, 128, 128, 0.425);
     padding: 10px 0;
@@ -216,10 +261,30 @@ aside{
     flex-direction: column;
 }
 
+.dictionary{
+    justify-content: flex-start;
+    width: 100vw;
+    transform: translateX(100%);
+    transition: 0.25s;
+    background-color:#F5F5F5 ;
+    z-index: 2;
+    color: gray;
+    height: 80vh;
+}
+
+.appearSheet{
+    transform: translateX(-100%);
+    transition: linear 0.25s;
+}
+
 footer{
     position: absolute;
     bottom: 0;
     width: 100vw;
     height: 10vh;
     background-color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    z-index: 4;
 }
