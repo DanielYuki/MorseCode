@@ -342,7 +342,13 @@ function clean() {
 
 
 //LOCAL STORAGE
-let favList = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+let favList;
+
+if (localStorage.getItem('items')) {
+    favList = JSON.parse(localStorage.getItem('items'));
+} else {
+    favList = [];
+}
 
 localStorage.setItem('items', JSON.stringify(favList));
 const data = JSON.parse(localStorage.getItem('items'));
@@ -367,6 +373,7 @@ addFav.onclick = () => {
     favCreator(input.value, results.textContent);
     console.log(favList)
     clean();
+    nothingStar.style.display = 'none';
 };
 
 data.forEach(item => {
@@ -379,8 +386,16 @@ unstarAll.onclick = () => {
     while (div.firstChild) {
         div.removeChild(div.firstChild);
     }
+    nothingStar.style.display = 'flex';
 };
 // /localStorage
+let nothingStar = document.querySelector('.nothing')
+
+if(favList.length == 0){
+    nothingStar.style.display = 'flex';
+}else{
+    nothingStar.style.display = 'none';
+}
 
 
 if ('serviceWorker' in navigator) {
