@@ -136,8 +136,10 @@ button{
 section{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
+    overflow: hidden;
+    height: 80vh;
 }
 
 .selector{
@@ -335,12 +337,12 @@ footer{
     -webkit-transform: perspective(600px) rotateY(180deg) translateY(-100%);
 }
 
-.card:hover > .front{
+.card:active > .front{
     transform: perspective(600px) rotateY(-180deg);
     -webkit-transform: perspective(600px) rotateY(-180deg);
 }
 
-.card:hover > .back{
+.card:active > .back{
     transform: perspective(600px) rotateY(0deg) translateY(-100%);
     -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
 }

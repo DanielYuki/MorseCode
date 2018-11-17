@@ -1,4 +1,4 @@
-let cacheName = 'MorseCodev3';
+let cacheName = 'MorseCodev4';
 let filesToCache = [
     './',
     './index.html',
