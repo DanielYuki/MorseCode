@@ -9,8 +9,8 @@ body{
 
 header{
     width: 100vw;
-    background-color: white;
-    color: #767676;
+    background-color: #4285f4;
+    color: white;
     justify-content: center;
     align-items: center;
     display: flex;

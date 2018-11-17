@@ -3,7 +3,8 @@ let filesToCache = [
     '/',
     '/index.html',
     '/script.js',
-    '/style.css'
+    '/style.css',
+    '/root/favicon.ico'
 ];
 
 self.addEventListener('install', function(event) {
