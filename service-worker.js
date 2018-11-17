@@ -1,11 +1,9 @@
-'use strict';
-
 let cacheName = 'MorseCodev3';
 let filesToCache = [
-    '/',
-    '/index.html',
-    '/script.js',
-    '/style.css'
+    './',
+    './index.html',
+    './script.js',
+    './style.css'
 ];
 
 self.addEventListener('install', function(event) {
