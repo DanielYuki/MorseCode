@@ -1,10 +1,9 @@
 let cacheName = 'MorseCode';
 let filesToCache = [
     '/',
-    'index.html',
-    'script.js',
-    'style.css',
-    'root/favicon.ico'
+    '/index.html',
+    '/script.js',
+    '/style.css'
 ];
 
 self.addEventListener('install', function(event) {
