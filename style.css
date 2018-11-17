@@ -325,17 +325,21 @@ footer{
 .front{
     font-size:20vw;
     transform: perspective(600px) rotateY(0deg);
+    -webkit-transform: perspective(600px) rotateY(0deg);
 }
 
 .back{
     font-size: 16vw;
     transform: perspective(600px) rotateY(180deg) translateY(-100%);
+    -webkit-transform: perspective(600px) rotateY(180deg) translateY(-100%);
 }
 
 .card:hover > .front{
     transform: perspective(600px) rotateY(-180deg);
+    -webkit-transform: perspective(600px) rotateY(-180deg);
 }
 
 .card:hover > .back{
     transform: perspective(600px) rotateY(0deg) translateY(-100%);
+    -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
 }
