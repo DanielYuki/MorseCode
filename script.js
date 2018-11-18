@@ -21,23 +21,32 @@ let gambiarra1 = document.querySelector('#gambiarra1');
 let gambiarra2 = document.querySelector('#gambiarra2');
 
 let textToMorse = true;
+let nothingStar = document.querySelector('.nothing')
 
 button.onclick = clean;
 
 btnStar.onclick = () => {
     star.classList.add('appearStar');
-    sheet.classList.remove('appearSheet')
+    sheet.classList.remove('appearSheet');
+    btnStar.classList.add('focused');
+    btnSheet.classList.remove('focused');
+    btnHome.classList.remove('focused');
 }
 
 btnHome.onclick = () => {
     star.classList.remove('appearStar')
     sheet.classList.remove('appearSheet')
+    btnHome.classList.add('focused');
+    btnSheet.classList.remove('focused');
+    btnStar.classList.remove('focused');
 }
 
 btnSheet.onclick = () => {
     sheet.classList.add('appearSheet')
     star.classList.remove('appearStar')
-
+    btnSheet.classList.add('focused');
+    btnStar.classList.remove('focused');
+    btnHome.classList.remove('focused');
 }
 
 swap.onclick = () => {
@@ -327,7 +336,7 @@ function clean() {
     button.style.display = 'none';
 }
 
-//  DON'T WORK ON MOBILE... sadly (just a 'copy to clipboard' button)
+//  DON'T WORK PROPERLY ON MOBILE... sadly (just a 'copy to clipboard' button)
 // function copy(containerid) {
 //     let textarea = document.createElement('textarea')
 //     textarea.id = 'temp_element'
@@ -342,43 +351,105 @@ function clean() {
 
 
 //LOCAL STORAGE
-let favList;
+// let favList;
 
-if (localStorage.getItem('items')) {
-    favList = JSON.parse(localStorage.getItem('items'));
-} else {
-    favList = [];
+// if (localStorage.getItem('items')) {
+//     favList = JSON.parse(localStorage.getItem('items'));
+// } else {
+//     favList = [];
+// }
+
+// localStorage.setItem('items', JSON.stringify(favList));
+// const data = JSON.parse(localStorage.getItem('items'));
+
+// const favCreator = (text, morse) => {
+//     const divFav = document.createElement('div');
+//     const divTxt = document.createElement('div');
+//     const divMorse = document.createElement('div');
+//     const divDelete = document.createElement('button')
+//     divTxt.textContent = text;
+//     divMorse.textContent = morse;
+//     divDelete.classList.add('delete');
+//     div.appendChild(divFav);
+//     divFav.appendChild(divTxt);
+//     divFav.appendChild(divMorse);
+//     divFav.appendChild(divDelete);
+// }
+
+// addFav.onclick = () => {
+//     favList.push([input.value, results.textContent]);
+//     localStorage.setItem('items', JSON.stringify(favList));
+//     favCreator(input.value, results.textContent);
+//     console.log(favList)
+//     clean();
+//     nothingStar.style.display = 'none';
+// };
+
+// data.forEach(item => {
+//     favCreator(item[0], item[1]);
+// });
+
+// unstarAll.onclick = () => {
+//     clean();
+//     localStorage.clear();
+//     while (div.firstChild) {
+//         div.removeChild(div.firstChild);
+//     }
+//     nothingStar.style.display = 'flex';
+// };
+// /localStorage
+// localStorage2.0
+
+// let div = document.querySelector('ul');
+// let inputElement = document.querySelector('input');
+// let addFav = document.querySelector('button');
+
+let todos = JSON.parse(localStorage.getItem('list_todos')) || [];
+
+function renderTodos() {
+    div.innerHTML = '';
+    for (todo of todos) {
+        let todoElement = document.createElement('div');
+        let favText = document.createElement('div');
+        let favMorse = document.createElement('div');
+
+        favText.textContent = todo[0];
+        favMorse.textContent = todo[1];
+
+        let linkElement = document.createElement('i');
+        linkElement.classList.add('fa');
+        linkElement.classList.add('fa-star');
+
+        let pos = todos.indexOf(todo);
+        linkElement.setAttribute('onclick', 'deleteTodo(' + pos + ')');
+
+        todoElement.appendChild(favText);
+        todoElement.appendChild(favMorse)
+        todoElement.appendChild(linkElement);
+
+        div.appendChild(todoElement);
+    }
 }
 
-localStorage.setItem('items', JSON.stringify(favList));
-const data = JSON.parse(localStorage.getItem('items'));
+verify();
+renderTodos();
 
-const favCreator = (text, morse) => {
-    const divFav = document.createElement('div');
-    const divTxt = document.createElement('div');
-    const divMorse = document.createElement('div');
-    const divDelete = document.createElement('button')
-    divTxt.textContent = text;
-    divMorse.textContent = morse;
-    divDelete.classList.add('delete');
-    div.appendChild(divFav);
-    divFav.appendChild(divTxt);
-    divFav.appendChild(divMorse);
-    divFav.appendChild(divDelete);
+addFav.onclick = function () {
+    let todoText = input.value;
+    let todoMorse = results.textContent;
+    console.log(todos)
+    if (todoText.trim()) {
+        todos.push([todoText, todoMorse]);
+        renderTodos();
+        saveToStorage();
+        clean();
+        verify();
+    }
+
+    else {
+        alert('Error');
+    }
 }
-
-addFav.onclick = () => {
-    favList.push([input.value, results.textContent]);
-    localStorage.setItem('items', JSON.stringify(favList));
-    favCreator(input.value, results.textContent);
-    console.log(favList)
-    clean();
-    nothingStar.style.display = 'none';
-};
-
-data.forEach(item => {
-    favCreator(item[0], item[1]);
-});
 
 unstarAll.onclick = () => {
     clean();
@@ -388,14 +459,29 @@ unstarAll.onclick = () => {
     }
     nothingStar.style.display = 'flex';
 };
-// /localStorage
-let nothingStar = document.querySelector('.nothing')
 
-if(favList.length == 0){
-    nothingStar.style.display = 'flex';
-}else{
-    nothingStar.style.display = 'none';
+function deleteTodo(pos) {
+    todos.splice(pos, 1);
+    renderTodos();
+    saveToStorage();
+    verify();
 }
+
+function saveToStorage() {
+    localStorage.setItem('list_todos', JSON.stringify(todos));
+}
+
+function verify() {
+    if (todos.length == 0) {
+        nothingStar.style.display = 'flex';
+    } else {
+        nothingStar.style.display = 'none';
+    }
+}
+
+// /localStorage2.0
+
+
 
 
 if ('serviceWorker' in navigator) {
