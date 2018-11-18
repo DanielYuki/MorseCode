@@ -236,11 +236,6 @@ h2{
     font-weight: bolder;
 }
 
-.appearStar{
-    transform: translateX(100%);
-    transition: linear 0.25s;
-}
-
 .fav{
     width: 100%;
     max-height: 70vh;
@@ -271,9 +266,38 @@ h2{
     height: 80vh;
 }
 
+.appearStar{
+    transform: translateX(100%);
+    transition: linear 0.25s;
+}
+
 .appearSheet{
     transform: translateX(-100%);
     transition: linear 0.25s;
+}
+
+.btnStar, .btnHome, .btnSheet{
+    border-radius: 100%;
+    width: 16vw;
+    height: 16vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 100%;
+    color: lightgray;
+}
+
+.btnStar{
+
+}
+
+.btnSheet{
+
+}
+
+.btnHome{
+    /* background-color: lightgray;
+    color: black; */
 }
 
 footer{
@@ -343,4 +367,12 @@ footer{
 .card:hover > .back{
     transform: perspective(600px) rotateY(0deg) translateY(-100%);
     -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
+}
+
+.gambiarra{
+    position: absolute;
+    bottom: -100px;
+    width: 100vw;
+    height: 100px;
+    background-color: white;
 }
