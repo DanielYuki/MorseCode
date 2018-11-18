@@ -1,6 +1,6 @@
 let cacheName = 'MorseCodev4';
 let filesToCache = [
-    '/',
+    './',
     './index.html',
     './script.js',
     './style.css'
