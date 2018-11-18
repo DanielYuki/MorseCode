@@ -39,7 +39,7 @@
     }
    ],
   "short_name": "EasyMorse",
-  "start_url": "/index.html",
+  "start_url": "/MorseCode/",
   "display": "fullscreen",
   "orientation": "portrait",
   "background_color": "#3E4EB8",
