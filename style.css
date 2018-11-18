@@ -4,6 +4,15 @@ html{
     margin: 0;
 }
 
+.statusBarIos{
+    position: absolute;
+    top: 0;
+    height: 20px;
+    background-color: #4285f4;
+    margin: 0;
+    width: 100vw;
+}
+
 body{
     background-color: #F5F5F5;
     font-family: sans-serif;
