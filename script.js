@@ -51,6 +51,7 @@ btnSheet.onclick = () => {
 
 swap.onclick = () => {
     clean();
+    swap.classList.toggle('rotate');
     if (textToMorse === true) {
         textToMorse = false;
         gambiarra1.innerHTML = 'MORSE';
@@ -318,11 +319,14 @@ input.onkeypress = () => {
                 case '':
                     break;
                 default:
-                    '?'
                     validador = false;
-            }if (validador != true) {
-                alert('Digite Apenas Pontos e Traços ("." "-" "/") Ou Digite Certo')
-            } else {
+            }if(input.value.length < 2 && validador != true){
+                clean();
+                alert('Digite Apenas Pontos e Traços ("." "-" "/")');
+            }
+            else if (validador != true) {
+                alert('Digite Apenas Pontos e Traços ("." "-" "/")')
+            }else {
                 results.innerHTML = word;
             }
         }
