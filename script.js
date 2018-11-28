@@ -23,8 +23,8 @@ let gambiarra2 = document.querySelector('#gambiarra2');
 let textToMorse = true;
 let nothingStar = document.querySelector('.nothing');
 
-let showCard = document.querySelectorAll('.card');
 
+let showCard = document.querySelectorAll('.card');
 
 for (cards of showCard) {
     cards.onclick = flip;
@@ -37,6 +37,7 @@ function flip() {
     this.firstChild.nextSibling.classList.toggle('frontFlip')
     this.lastChild.previousSibling.classList.toggle('backFlip')
 }
+
 
 button.onclick = clean;
 
@@ -77,6 +78,13 @@ swap.onclick = () => {
         gambiarra1.innerHTML = 'TEXT';
     }
 }
+
+// localStorage.getItem(input.value)
+// console.log(todos.findIndex(favExist))
+// todos.findIndex('ta')
+// console.log(todos)
+// console.log(localStorage.getItem([input.value]))
+// console.log(input.value)
 
 input.onkeypress = () => {
     let word = ''
@@ -346,6 +354,15 @@ input.onkeypress = () => {
             }
         }
     }
+
+    for (let i = 0; i < todos.length; i++) {
+        if (input.value === todos[i][0]) {
+            console.log(todos[i][0])
+            return addFav.innerHTML = '<i class="fa fa-star" aria-hidden="true"></i>'
+        } else {
+            addFav.innerHTML = '<i class="fa fa-star-o" aria-hidden="true"></i>'
+        }
+    }
 }
 
 function clean() {
@@ -454,19 +471,32 @@ verify();
 renderTodos();
 
 addFav.onclick = function () {
-    let todoText = input.value;
-    let todoMorse = results.textContent;
-    console.log(todos)
-    if (todoText.trim()) {
-        todos.push([todoText, todoMorse]);
+    if (addFav.innerHTML === '<i class="fa fa-star" aria-hidden="true"></i>') {
+        for (let i = 0; i < todos.length; i++) {
+            if (todos[i][0] === input.value) {
+                todos.splice(i, 1);
+                console.log(`"${input.value}" Removed!`)
+            }
+        }
         renderTodos();
         saveToStorage();
         clean();
         verify();
-    }
-
-    else {
-        alert('Error');
+    } else {
+        let todoText = input.value;
+        let todoMorse = results.textContent;
+        console.log(todos)
+        if (todoText.trim()) {
+            todos.push([todoText, todoMorse]);
+            renderTodos();
+            saveToStorage();
+            clean();
+            verify();
+            console.log(`"${todoText}" Saved!`);
+        }
+        else {
+            alert('Error');
+        }
     }
 }
 
