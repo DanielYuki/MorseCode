@@ -21,7 +21,22 @@ let gambiarra1 = document.querySelector('#gambiarra1');
 let gambiarra2 = document.querySelector('#gambiarra2');
 
 let textToMorse = true;
-let nothingStar = document.querySelector('.nothing')
+let nothingStar = document.querySelector('.nothing');
+
+let showCard = document.querySelectorAll('.card');
+
+
+for (cards of showCard) {
+    cards.onclick = flip;
+}
+
+function flip() {
+    // console.log(this);
+    // console.log(this.firstChild.nextSibling);
+    // console.log(this.lastChild.previousSibling);
+    this.firstChild.nextSibling.classList.toggle('frontFlip')
+    this.lastChild.previousSibling.classList.toggle('backFlip')
+}
 
 button.onclick = clean;
 
@@ -320,13 +335,13 @@ input.onkeypress = () => {
                     break;
                 default:
                     validador = false;
-            }if(input.value.length < 2 && validador != true){
+            }if (input.value.length <= 1 && validador != true) {
                 clean();
                 alert('Digite Apenas Pontos e Traços ("." "-" "/")');
             }
             else if (validador != true) {
                 alert('Digite Apenas Pontos e Traços ("." "-" "/")')
-            }else {
+            } else {
                 results.innerHTML = word;
             }
         }

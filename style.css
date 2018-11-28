@@ -369,7 +369,15 @@ h4{
     -webkit-transform: perspective(600px) rotateY(180deg) translateY(-100%);
 }
 
-.card:hover > .front{
+.frontFlip{
+    -webkit-transform: perspective(600px) rotateY(-180deg);
+}
+
+.backFlip{
+    -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
+}
+
+/* .card:hover > .front{
     transform: perspective(600px) rotateY(-180deg);
     -webkit-transform: perspective(600px) rotateY(-180deg);
 }
@@ -377,4 +385,4 @@ h4{
 .card:hover > .back{
     transform: perspective(600px) rotateY(0deg) translateY(-100%);
     -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
-}
+} */
