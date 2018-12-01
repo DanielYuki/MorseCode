@@ -1,5 +1,6 @@
 {
   "name": "EasyMorseTranslate",
+  "description": "A simply Morse Translate App, Develop by DYuki just 4 fun",
   "icons": [
     {
      "src": "root/android-icon-36x36.png",
@@ -40,8 +41,8 @@
    ],
   "short_name": "EasyMorse",
   "start_url": "./index.html",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#3E4EB8",
-  "theme_color": "#2F3BA2"
+  "background_color": "#FFFFFF",
+  "theme_color": "#1A73E8"
 }

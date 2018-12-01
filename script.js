@@ -501,12 +501,16 @@ addFav.onclick = function () {
 }
 
 unstarAll.onclick = () => {
-    clean();
-    localStorage.clear();
-    while (div.firstChild) {
-        div.removeChild(div.firstChild);
+    let confirmation = confirm('Are You Sure ?');
+    if (confirmation === true) {
+        clean();
+        localStorage.clear();
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
+        nothingStar.style.display = 'flex';
+        alert('Done')
     }
-    nothingStar.style.display = 'flex';
 };
 
 function deleteTodo(pos) {
