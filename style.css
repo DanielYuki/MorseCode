@@ -393,12 +393,12 @@ h4{
 .iosAlertBoxWebApp{
     position: absolute;
     bottom: -15%;
-    display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
     z-index: 5;
     opacity: 0;
+    display: none;
 }
 
 .actualContent{
@@ -428,21 +428,8 @@ h4{
     border-top: 20px solid lightgray;
   }
 
-  .startAnimate{
-    animation: show 10s 2s;
-    transition: ease-in-out;
-  }
-
 @keyframes show{
-    0%{
-        transform: translateY(0%);
-        opacity: 0;
-    }
-    10%{
-        transform: translateY(-135%);
-        opacity: 1;
-    }
-    90%{
+    10%, 90%{
         transform: translateY(-135%);
         opacity: 1;
     }

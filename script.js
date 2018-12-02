@@ -535,18 +535,6 @@ function verify() {
 // /localStorage2.0
 
 
-
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('service-worker.js')
-        .then(function () {
-            console.log('Service Worker Registered');
-        }, function (error) {
-            console.log(error);
-        });
-}
-
 // Detects if device is on iOS 
 const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -558,6 +546,19 @@ const isIos = () => {
   // Checks if should display install popup notification:
   if (isIos() && !isInStandaloneMode()) {
       let showModal = document.querySelector('.iosAlertBoxWebApp');
-    //   showModal.classList.add('starAnimate');
       showModal.style.animation = 'show 8s ease-in-out 2s'
+      showModal.style.display = 'flex'
+      setTimeout( timeOutModal = () => {showModal.style.display = 'none'}, 10000)
   }
+
+
+//SERVICE WORKER
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('service-worker.js')
+        .then(function () {
+            console.log('Service Worker Registered');
+        }, function (error) {
+            console.log(error);
+        });
+}
