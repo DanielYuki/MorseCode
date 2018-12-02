@@ -1,3 +1,5 @@
+// EVERYTHING WORKS JUST FINE... 
+// BUT I NEED TO IMPROVE MYSELF AND MAKE IT MORE "READABLE"
 let button = document.querySelector('.clean');
 let input = document.querySelector('.text');
 let results = document.querySelector('#result');
@@ -23,7 +25,7 @@ let gambiarra2 = document.querySelector('#gambiarra2');
 let textToMorse = true;
 let nothingStar = document.querySelector('.nothing');
 
-
+// FLIP CARD FUNCTION
 let showCard = document.querySelectorAll('.card');
 
 for (cards of showCard) {
@@ -31,13 +33,10 @@ for (cards of showCard) {
 }
 
 function flip() {
-    // console.log(this);
-    // console.log(this.firstChild.nextSibling);
-    // console.log(this.lastChild.previousSibling);
     this.firstChild.nextSibling.classList.toggle('frontFlip')
     this.lastChild.previousSibling.classList.toggle('backFlip')
 }
-
+// ----------
 
 button.onclick = clean;
 
@@ -79,14 +78,7 @@ swap.onclick = () => {
     }
 }
 
-// localStorage.getItem(input.value)
-// console.log(todos.findIndex(favExist))
-// todos.findIndex('ta')
-// console.log(todos)
-// console.log(localStorage.getItem([input.value]))
-// console.log(input.value)
-
-input.onkeypress = () => {
+const refresh = input.onkeypress = () => {
     let word = ''
     let validador = true;
 
@@ -358,12 +350,16 @@ input.onkeypress = () => {
     for (let i = 0; i < todos.length; i++) {
         if (input.value === todos[i][0]) {
             console.log(todos[i][0])
+            addFav.style.color = 'yellow'
             return addFav.innerHTML = '<i class="fa fa-star" aria-hidden="true"></i>'
         } else {
+            addFav.style.color = 'rgb(153, 153, 153)'
             addFav.innerHTML = '<i class="fa fa-star-o" aria-hidden="true"></i>'
         }
     }
 }
+
+input.addEventListener("blur", refresh);
 
 function clean() {
     results.innerHTML = '';
@@ -372,74 +368,7 @@ function clean() {
     button.style.display = 'none';
 }
 
-//  DON'T WORK PROPERLY ON MOBILE... sadly (just a 'copy to clipboard' button)
-// function copy(containerid) {
-//     let textarea = document.createElement('textarea')
-//     textarea.id = 'temp_element'
-//     textarea.style.height = 0
-//     document.body.appendChild(textarea)
-//     textarea.value = document.getElementById(containerid).innerText
-//     let selector = document.querySelector('#temp_element')
-//     selector.select()
-//     document.execCommand('copy')
-//     document.body.removeChild(textarea)
-// }
-
-
-//LOCAL STORAGE
-// let favList;
-
-// if (localStorage.getItem('items')) {
-//     favList = JSON.parse(localStorage.getItem('items'));
-// } else {
-//     favList = [];
-// }
-
-// localStorage.setItem('items', JSON.stringify(favList));
-// const data = JSON.parse(localStorage.getItem('items'));
-
-// const favCreator = (text, morse) => {
-//     const divFav = document.createElement('div');
-//     const divTxt = document.createElement('div');
-//     const divMorse = document.createElement('div');
-//     const divDelete = document.createElement('button')
-//     divTxt.textContent = text;
-//     divMorse.textContent = morse;
-//     divDelete.classList.add('delete');
-//     div.appendChild(divFav);
-//     divFav.appendChild(divTxt);
-//     divFav.appendChild(divMorse);
-//     divFav.appendChild(divDelete);
-// }
-
-// addFav.onclick = () => {
-//     favList.push([input.value, results.textContent]);
-//     localStorage.setItem('items', JSON.stringify(favList));
-//     favCreator(input.value, results.textContent);
-//     console.log(favList)
-//     clean();
-//     nothingStar.style.display = 'none';
-// };
-
-// data.forEach(item => {
-//     favCreator(item[0], item[1]);
-// });
-
-// unstarAll.onclick = () => {
-//     clean();
-//     localStorage.clear();
-//     while (div.firstChild) {
-//         div.removeChild(div.firstChild);
-//     }
-//     nothingStar.style.display = 'flex';
-// };
-// /localStorage
-// localStorage2.0
-
-// let div = document.querySelector('ul');
-// let inputElement = document.querySelector('input');
-// let addFav = document.querySelector('button');
-
+// LOCAL STORAGE 2.0
 let todos = JSON.parse(localStorage.getItem('list_todos')) || [];
 
 function renderTodos() {
@@ -475,7 +404,7 @@ addFav.onclick = function () {
         for (let i = 0; i < todos.length; i++) {
             if (todos[i][0] === input.value) {
                 todos.splice(i, 1);
-                console.log(`"${input.value}" Removed!`)
+                alert(`"${input.value}" Removed!`)
             }
         }
         renderTodos();
@@ -492,7 +421,7 @@ addFav.onclick = function () {
             saveToStorage();
             clean();
             verify();
-            console.log(`"${todoText}" Saved!`);
+            alert(`"${todoText}" Saved!`);
         }
         else {
             alert('Error');
@@ -514,6 +443,7 @@ unstarAll.onclick = () => {
 };
 
 function deleteTodo(pos) {
+    alert(`"${todos[pos][0]}" Removed`)
     todos.splice(pos, 1);
     renderTodos();
     saveToStorage();
@@ -531,7 +461,6 @@ function verify() {
         nothingStar.style.display = 'none';
     }
 }
-
 // /localStorage2.0
 
 

@@ -1,3 +1,5 @@
+/* I ACTUALLY NEED TO IMPROVE MY CSS SKILLS... */
+/* WHAT A MESS!! */
 html, body{
     background-color: #4285f4;
     font-family: sans-serif;
@@ -83,10 +85,6 @@ button{
     display: none;
 }
 
-.favorites {
-    color: yellow;
-}
-
 #result{
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -133,6 +131,7 @@ section{
     transform: rotate(180deg);
 }
 
+/* SWAP ARROWS PURE CSS */
 .arrows{
     transition: 0.5s cubic-bezier(.63,-0.51,0,-0.13);
 	width:10px;
@@ -165,7 +164,7 @@ section{
 	right:100%;
 	bottom:-100%;
 }
-
+/* ---------- */
 aside{
     width: 300vw;
     height: auto;
@@ -303,8 +302,6 @@ h2{
 }
 
 footer{
-    /* position: absolute;
-    bottom: 0; */
     width: 100vw;
     height: 10vh;
     background-color: white;
@@ -379,7 +376,7 @@ h4{
 .backFlip{
     -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
 }
-
+/* CARDFLIP ANIMATION WITH HOVER, WORKS JUST FINE BUT I PREFER THE ONCLICK THOUGH */
 /* .card:hover > .front{
     transform: perspective(600px) rotateY(-180deg);
     -webkit-transform: perspective(600px) rotateY(-180deg);
@@ -430,7 +427,7 @@ h4{
 
 @keyframes show{
     10%, 90%{
-        transform: translateY(-135%);
+        transform: translateY(-115%);
         opacity: 1;
     }
     100%{
