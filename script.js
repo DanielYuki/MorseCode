@@ -546,3 +546,16 @@ if ('serviceWorker' in navigator) {
             console.log(error);
         });
 }
+
+// Detects if device is on iOS 
+const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+  }
+  // Detects if device is in standalone mode
+  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+  
+  // Checks if should display install popup notification:
+  if (isIos() && !isInStandaloneMode()) {
+    alert('Install this WebApp on your iPhone for a Better Experience')
+  }
