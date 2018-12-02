@@ -389,3 +389,65 @@ h4{
     transform: perspective(600px) rotateY(0deg) translateY(-100%);
     -webkit-transform: perspective(600px) rotateY(0deg) translateY(-100%);
 } */
+
+.iosAlertBoxWebApp{
+    position: absolute;
+    bottom: -15%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    z-index: 5;
+    opacity: 0;
+}
+
+.actualContent{
+    height: 8vh;
+    width: 95vw;
+    padding: 5px;
+    font-size: 10pt;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.iosAlertBoxWebApp i{
+    font-size: 6vh;
+    color: gray;
+    margin: 5px;
+}
+
+.triangleDown {
+    align-self: center;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid lightgray;
+  }
+
+  .startAnimate{
+    animation: show 10s 2s;
+    transition: ease-in-out;
+  }
+
+@keyframes show{
+    0%{
+        transform: translateY(0%);
+        opacity: 0;
+    }
+    10%{
+        transform: translateY(-135%);
+        opacity: 1;
+    }
+    90%{
+        transform: translateY(-135%);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+}

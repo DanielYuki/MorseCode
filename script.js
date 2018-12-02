@@ -557,5 +557,7 @@ const isIos = () => {
   
   // Checks if should display install popup notification:
   if (isIos() && !isInStandaloneMode()) {
-    alert('Install this WebApp on your iPhone for a Better Experience')
+      let showModal = document.querySelector('.iosAlertBoxWebApp');
+    //   showModal.classList.add('starAnimate');
+      showModal.style.animation = 'show 8s ease-in-out 2s'
   }
