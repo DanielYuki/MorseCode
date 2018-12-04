@@ -40,6 +40,7 @@ function flip() {
 
 button.onclick = clean;
 
+// BIG SCREEN HANDLER FUNCTION
 function onBigScreens() {
     if (window.innerWidth >= 950) {
         return true
@@ -117,6 +118,7 @@ btnSheet.onclick = () => {
     }
 }
 
+//MORSE TO TEXT & TEXT TO MORSE SWAP
 swap.onclick = () => {
     clean();
     swap.classList.toggle('rotate');
@@ -131,6 +133,7 @@ swap.onclick = () => {
     }
 }
 
+//MAIN FUNCTION I'D SAY
 const refresh = input.onkeypress = () => {
     let word = ''
     let validador = true;
@@ -270,6 +273,7 @@ const refresh = input.onkeypress = () => {
             results.innerHTML = word;
         }
     } else {
+        //SUPER SWITCH CASE... WORKS JUST FINE
         let morse = input.value.split(' ');
         for (let i = 0; i < morse.length; i++) {
             switch (morse[i]) {
@@ -416,6 +420,7 @@ const refresh = input.onkeypress = () => {
 
 input.addEventListener("blur", refresh);
 
+//FUNCTION TO CLEAN INPUT AND TRANSLATION BAR
 function clean() {
     if (onBigScreens() === false) {
         blueBar.style.display = 'none';
@@ -428,6 +433,7 @@ function clean() {
 // LOCAL STORAGE 2.0
 let todos = JSON.parse(localStorage.getItem('list_todos')) || [];
 
+//FAVLIST CREATOR
 function renderTodos() {
     div.innerHTML = '';
     for (todo of todos) {
@@ -456,6 +462,7 @@ function renderTodos() {
 verifyFavList();
 renderTodos();
 
+//ADDs ITEM SELECTED
 addFav.onclick = function () {
     if (addFav.innerHTML === '<i class="fa fa-star" aria-hidden="true"></i>') {
         for (let i = 0; i < todos.length; i++) {
@@ -488,6 +495,7 @@ addFav.onclick = function () {
     }
 }
 
+//DELETE EVERYTHING
 unstarAll.onclick = () => {
     let confirmation = confirm('Are You Sure ?');
     if (confirmation === true) {
@@ -501,6 +509,7 @@ unstarAll.onclick = () => {
     }
 };
 
+//DELETE ONE
 function deleteTodo(pos) {
     alert(`"${todos[pos][0]}" Removed`)
     todos.splice(pos, 1);
@@ -509,10 +518,12 @@ function deleteTodo(pos) {
     verifyFavList();
 }
 
+//SAVE TO LOCAL STORAGE
 function saveToStorage() {
     localStorage.setItem('list_todos', JSON.stringify(todos));
 }
 
+//VERIFY IF THEREs SOMETHING IN THE LOCALSTORAGE
 function verifyFavList() {
     if (todos.length == 0) {
         nothingStar.style.display = 'flex';
