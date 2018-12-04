@@ -283,7 +283,7 @@ h2{
     transition: linear 0.25s;
 }
 
-.btnStar, .btnHome, .btnSheet{
+footer > div{
     border-radius: 100%;
     width: 10vh;
     height: 10vh;
@@ -299,10 +299,6 @@ h2{
 .focused{
     color: #4285f4;
     font-size: 10.5pt;
-}
-
-.fakeFooter{
-    display: none;
 }
 
 footer{
@@ -448,6 +444,7 @@ h4{
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
+        align-items: flex-start;
     }
     .fav > div{
         padding: 2.5% 2.5% 0;
@@ -457,6 +454,7 @@ h4{
     .superContainer > .card{
         width: 20vw;
         height: 21vw;
+        margin: 5px;
     }
     .card > .back{
         font-size: 11.5vw;
@@ -504,7 +502,7 @@ h4{
         justify-content: space-evenly;
         height: 0;
         position: relative;
-        bottom: 35vh;
+        bottom: 30vh;
     }
     .blurGray{
         filter: blur(5px) grayscale(100%);
@@ -520,7 +518,7 @@ h4{
     }
     .focused{
         color: #4285f4;
-        font-size: 10.5pt;
+        font-size: 13.5pt;
         background-color: rgba(66, 134, 244, 0.1);
         border: none;
     }
@@ -532,6 +530,9 @@ h4{
         border-radius: 50%;
         border: solid 1px gray;
         padding: 10px;
+        width: 12vh;
+        height: 12vh;
+        font-size: 12pt;
     }
     /* FAV SECTION MEDIA QUERY */
     .fav{

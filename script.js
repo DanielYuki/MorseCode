@@ -40,6 +40,14 @@ function flip() {
 
 button.onclick = clean;
 
+function onBigScreens() {
+    if (window.innerWidth >= 950) {
+        return true
+    } else {
+        return false
+    }
+}
+
 function resetPageStyle() {
     home.classList.remove('blurGray')
     fuuter.classList.remove('sideStepRight');
@@ -51,10 +59,10 @@ function resetPageStyle() {
 }
 
 btnStar.onclick = () => {
-    if (window.innerWidth >= 950) {
-        if(btnSheet.className !== 'btnSheet focused'){
+    if (onBigScreens() === true) {
+        if (btnSheet.className !== 'btnSheet focused') {
             home.classList.toggle('blurGray')
-        }else{
+        } else {
             home.classList.add('blurGray')
         }
         star.classList.toggle('appearStar');
@@ -67,6 +75,7 @@ btnStar.onclick = () => {
             resetPageStyle()
         }
     } else {
+        console.log('asodioasda')
         star.classList.add('appearStar');
         sheet.classList.remove('appearSheet');
         btnStar.classList.add('focused');
@@ -84,10 +93,10 @@ btnHome.onclick = () => {
 }
 
 btnSheet.onclick = () => {
-    if (window.innerWidth >= 950) {
-        if(btnStar.className !== 'btnStar focused'){
+    if (onBigScreens() === true) {
+        if (btnStar.className !== 'btnStar focused') {
             home.classList.toggle('blurGray')
-        }else{
+        } else {
             home.classList.add('blurGray')
         }
         star.classList.remove('appearStar');
@@ -126,12 +135,14 @@ const refresh = input.onkeypress = () => {
     let word = ''
     let validador = true;
 
-    if (input.value.length == 0) {
-        blueBar.style.display = 'none';
-        button.style.display = 'none';
-    } else {
-        blueBar.style.display = 'flex';
-        button.style.display = 'flex';
+    if (onBigScreens() === false) {
+        if (input.value.length == 0) {
+            blueBar.style.display = 'none';
+            button.style.display = 'none';
+        } else {
+            blueBar.style.display = 'flex';
+            button.style.display = 'flex';
+        }
     }
 
     if (textToMorse) {
@@ -406,9 +417,11 @@ const refresh = input.onkeypress = () => {
 input.addEventListener("blur", refresh);
 
 function clean() {
+    if (onBigScreens() === false) {
+        blueBar.style.display = 'none';
+    }
     results.innerHTML = '';
     input.value = '';
-    blueBar.style.display = 'none';
     button.style.display = 'none';
 }
 
@@ -440,7 +453,7 @@ function renderTodos() {
     }
 }
 
-verify();
+verifyFavList();
 renderTodos();
 
 addFav.onclick = function () {
@@ -449,12 +462,14 @@ addFav.onclick = function () {
             if (todos[i][0] === input.value) {
                 todos.splice(i, 1);
                 alert(`"${input.value}" Removed!`)
+                addFav.innerHTML = '<i class="fa fa-star-o" aria-hidden="true"></i>'
+                addFav.style.color = 'rgb(153, 153, 153)';
             }
         }
         renderTodos();
         saveToStorage();
         clean();
-        verify();
+        verifyFavList();
     } else {
         let todoText = input.value;
         let todoMorse = results.textContent;
@@ -464,7 +479,7 @@ addFav.onclick = function () {
             renderTodos();
             saveToStorage();
             clean();
-            verify();
+            verifyFavList();
             alert(`"${todoText}" Saved!`);
         }
         else {
@@ -491,14 +506,14 @@ function deleteTodo(pos) {
     todos.splice(pos, 1);
     renderTodos();
     saveToStorage();
-    verify();
+    verifyFavList();
 }
 
 function saveToStorage() {
     localStorage.setItem('list_todos', JSON.stringify(todos));
 }
 
-function verify() {
+function verifyFavList() {
     if (todos.length == 0) {
         nothingStar.style.display = 'flex';
     } else {
