@@ -9,10 +9,10 @@ let blueBar = document.querySelector('.read');
 let addFav = document.querySelector('.favorites');
 let div = document.querySelector('.fav');
 
+let fuuter = document.querySelector('footer')
 let star = document.querySelector('.star')
 let home = document.querySelector('.home')
 let sheet = document.querySelector('.dictionary')
-
 let btnStar = document.querySelector('.btnStar');
 let btnHome = document.querySelector('.btnHome');
 let btnSheet = document.querySelector('.btnSheet');
@@ -40,28 +40,72 @@ function flip() {
 
 button.onclick = clean;
 
-btnStar.onclick = () => {
-    star.classList.add('appearStar');
+function resetPageStyle() {
+    home.classList.remove('blurGray')
+    fuuter.classList.remove('sideStepRight');
+    fuuter.classList.remove('sideStepLeft');
+    star.classList.remove('appearStar');
     sheet.classList.remove('appearSheet');
-    btnStar.classList.add('focused');
+    btnStar.classList.remove('focused');
     btnSheet.classList.remove('focused');
-    btnHome.classList.remove('focused');
+}
+
+btnStar.onclick = () => {
+    if (window.innerWidth >= 950) {
+        if(btnSheet.className !== 'btnSheet focused'){
+            home.classList.toggle('blurGray')
+        }else{
+            home.classList.add('blurGray')
+        }
+        star.classList.toggle('appearStar');
+        sheet.classList.remove('appearSheet');
+        btnStar.classList.toggle('focused');
+        btnSheet.classList.remove('focused');
+        fuuter.classList.toggle('sideStepRight');
+        fuuter.classList.remove('sideStepLeft');
+        home.onclick = () => {
+            resetPageStyle()
+        }
+    } else {
+        star.classList.add('appearStar');
+        sheet.classList.remove('appearSheet');
+        btnStar.classList.add('focused');
+        btnSheet.classList.remove('focused');
+        btnHome.classList.remove('focused');
+    }
 }
 
 btnHome.onclick = () => {
-    star.classList.remove('appearStar')
-    sheet.classList.remove('appearSheet')
+    star.classList.remove('appearStar');
+    sheet.classList.remove('appearSheet');
     btnHome.classList.add('focused');
     btnSheet.classList.remove('focused');
     btnStar.classList.remove('focused');
 }
 
 btnSheet.onclick = () => {
-    sheet.classList.add('appearSheet')
-    star.classList.remove('appearStar')
-    btnSheet.classList.add('focused');
-    btnStar.classList.remove('focused');
-    btnHome.classList.remove('focused');
+    if (window.innerWidth >= 950) {
+        if(btnStar.className !== 'btnStar focused'){
+            home.classList.toggle('blurGray')
+        }else{
+            home.classList.add('blurGray')
+        }
+        star.classList.remove('appearStar');
+        sheet.classList.toggle('appearSheet');
+        btnStar.classList.remove('focused');
+        btnSheet.classList.toggle('focused');
+        fuuter.classList.toggle('sideStepLeft');
+        fuuter.classList.remove('sideStepRight');
+        home.onclick = () => {
+            resetPageStyle()
+        }
+    } else {
+        sheet.classList.add('appearSheet');
+        star.classList.remove('appearStar');
+        btnSheet.classList.add('focused');
+        btnStar.classList.remove('focused');
+        btnHome.classList.remove('focused');
+    }
 }
 
 swap.onclick = () => {
@@ -467,18 +511,18 @@ function verify() {
 // Detects if device is on iOS 
 const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test( userAgent );
-  }
-  // Detects if device is in standalone mode
-  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
-  
-  // Checks if should display install popup notification:
-  if (isIos() && !isInStandaloneMode()) {
-      let showModal = document.querySelector('.iosAlertBoxWebApp');
-      showModal.style.animation = 'show 8s ease-in-out 2s'
-      showModal.style.display = 'flex'
-      setTimeout( timeOutModal = () => {showModal.style.display = 'none'}, 10000)
-  }
+    return /iphone|ipad|ipod/.test(userAgent);
+}
+// Detects if device is in standalone mode
+const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+// Checks if should display install popup notification:
+if (isIos() && !isInStandaloneMode()) {
+    let showModal = document.querySelector('.iosAlertBoxWebApp');
+    showModal.style.animation = 'show 8s ease-in-out 2s'
+    showModal.style.display = 'flex'
+    setTimeout(timeOutModal = () => { showModal.style.display = 'none' }, 10000)
+}
 
 
 //SERVICE WORKER
