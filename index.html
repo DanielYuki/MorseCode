@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Basic Morse Translator in PWA, developed by: Daniel Yuki(AKA DYuki) just 4fun and self improvement">
     <!-- ICONS... -->
     <link rel="apple-touch-icon" sizes="57x57" href="root/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="root/apple-icon-60x60.png">
@@ -15,6 +16,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="root/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="root/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="root/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="root/icon512x512.png">
     <link rel="icon" type="image/png" sizes="192x192" href="root/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="root/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="root/favicon-96x96.png">
@@ -83,12 +85,13 @@
                 </div>
                 <section class="write">
                     <div class="inputs">
-                        <input class="text" type="text" placeholder="Enter Text">
-                        <i class="fa fa-times clean" id="cleanAndFav" aria-hidden="true"></i>
+                        <label for="translateInput" class="visuallyhidden">Translate</label>
+                        <input id="translateInput" name="translateInput" type="text" placeholder="Enter Text">
+                        <i class="fa fa-times clean cleanAndFav" aria-hidden="true"></i>
                     </div>
                     <section class="read">
                         <div id="result"></div>
-                        <div class="favorites" id="cleanAndFav">
+                        <div class="favorites cleanAndFav">
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                         </div>
                     </section>

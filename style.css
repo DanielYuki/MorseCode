@@ -51,7 +51,7 @@ button{
     color: #EFF4FE;
 }
 
-.text{
+#translateInput{
     width: 100%;
     border: 0;
     padding: 10px 5vw;
@@ -61,6 +61,17 @@ button{
     font-size: 19.5pt;
     text-decoration: none;
 }
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }  
 
 .read{
     flex-direction: row;
@@ -74,7 +85,7 @@ button{
     display: none;
 }
 
-#cleanAndFav{
+.cleanAndFav{
     position: relative;
     right: 3%;
     font-size: 22pt;
@@ -125,6 +136,7 @@ section{
     align-items: center;
     display: flex;
     letter-spacing: 1px;
+    background-color: white;
 }
 
 .rotate{

@@ -1,7 +1,7 @@
 // EVERYTHING WORKS JUST FINE... 
 // BUT I NEED TO IMPROVE MYSELF AND MAKE IT MORE "READABLE"
 let button = document.querySelector('.clean');
-let input = document.querySelector('.text');
+let input = document.querySelector('#translateInput');
 let results = document.querySelector('#result');
 let swap = document.querySelector('.arrows');
 let blueBar = document.querySelector('.read');
