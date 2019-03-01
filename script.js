@@ -76,7 +76,6 @@ btnStar.onclick = () => {
             resetPageStyle()
         }
     } else {
-        console.log('asodioasda')
         star.classList.add('appearStar');
         sheet.classList.remove('appearSheet');
         btnStar.classList.add('focused');
@@ -134,7 +133,7 @@ swap.onclick = () => {
 }
 
 //MAIN FUNCTION I'D SAY
-const refresh = input.onkeypress = () => {
+const refresh = input.onkeyup = () => {
     let word = ''
     let validador = true;
 
@@ -268,7 +267,7 @@ const refresh = input.onkeypress = () => {
         }
         if (validador != true) {
             alert('Digite Apenas Números e Letras Sem acentuação')
-            clean();
+            input.value = input.value.slice(0, -1);
         } else {
             results.innerHTML = word;
         }
@@ -298,6 +297,9 @@ const refresh = input.onkeypress = () => {
                 case '--.':
                     word += ('G')
                     break;
+                case '—.':
+                    word += ('G')
+                    break;
                 case '....':
                     word += ('H')
                     break;
@@ -305,6 +307,9 @@ const refresh = input.onkeypress = () => {
                     word += ('I')
                     break;
                 case '.---':
+                    word += ('J')
+                    break;
+                case '.—-':
                     word += ('J')
                     break;
                 case '-.-':
@@ -316,16 +321,28 @@ const refresh = input.onkeypress = () => {
                 case '--':
                     word += ('M')
                     break;
+                case '—':
+                    word += ('M')
+                    break;
                 case '-.':
                     word += ('N')
                     break;
                 case '---':
                     word += ('O')
                     break;
+                case '—-':
+                    word += ('O')
+                    break;
                 case '.--.':
                     word += ('P')
                     break;
+                case '.—.':
+                    word += ('P')
+                    break;
                 case '--.-':
+                    word += ('Q')
+                    break;
+                case '—.-':
                     word += ('Q')
                     break;
                 case '.-.':
@@ -346,13 +363,22 @@ const refresh = input.onkeypress = () => {
                 case '.--':
                     word += ('W')
                     break;
+                case '.—':
+                    word += ('W')
+                    break;
                 case '-..-':
                     word += ('X')
                     break;
                 case '-.--':
                     word += ('Y')
                     break;
+                case '-.—':
+                    word += ('Y')
+                    break;
                 case '--..':
+                    word += ('Z')
+                    break;
+                case '—..':
                     word += ('Z')
                     break;
                 case '-----':
@@ -392,15 +418,15 @@ const refresh = input.onkeypress = () => {
                     break;
                 case '':
                     break;
+                case '-—':
+                    break;
                 default:
                     validador = false;
-            }if (input.value.length <= 1 && validador != true) {
-                clean();
+            }if (validador != true) {
+                input.value = input.value.slice(0, -1);
                 alert('Digite Apenas Pontos e Traços ("." "-" "/")');
             }
-            else if (validador != true) {
-                alert('Digite Apenas Pontos e Traços ("." "-" "/")')
-            } else {
+            else {
                 results.innerHTML = word;
             }
         }
@@ -408,7 +434,7 @@ const refresh = input.onkeypress = () => {
 
     for (let i = 0; i < todos.length; i++) {
         if (input.value === todos[i][0]) {
-            console.log(todos[i][0])
+            // console.log(todos[i][0])
             addFav.style.color = 'yellow'
             return addFav.innerHTML = '<i class="fa fa-star" aria-hidden="true"></i>'
         } else {
@@ -480,7 +506,7 @@ addFav.onclick = function () {
     } else {
         let todoText = input.value;
         let todoMorse = results.textContent;
-        console.log(todos)
+        // console.log(todos)
         if (todoText.trim()) {
             todos.push([todoText, todoMorse]);
             renderTodos();
